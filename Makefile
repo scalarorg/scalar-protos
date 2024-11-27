@@ -1,10 +1,11 @@
 DOCKER := $(shell which docker)
 DOCKER_BUF := $(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace bufbuild/buf
-# HTTPS_GIT := https://github.com/scalarorg/scalar-core.git
+# HTTPS_GIT := https://github.com/scalarorg/scalar-protos.git
 
 proto-all: proto-update-deps proto-format proto-lint proto-gen
 
 proto-gen:
+	
 	@echo "Generating Protobuf files"
 	@DOCKER_BUILDKIT=1 docker build -t scalar/proto-gen -f ./Dockerfile .
 	@$(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace scalar/proto-gen sh ./scripts/protocgen.sh

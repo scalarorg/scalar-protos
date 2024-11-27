@@ -5,13 +5,13 @@ package scalar.scalarnet.v1beta1;
 import "gogoproto/gogo.proto";
 import "axelar/nexus/exported/v1beta1/types.proto";
 
-option go_package = "github.com/scalarorg/scalar-core/x/scalarnet/types";
+option go_package = "github.com/scalarorg/scalar-protos/x/scalarnet/pb";
 option (gogoproto.goproto_getters_all) = false;
 
 // CallContractsProposal is a gov Content type for calling contracts on other
 // chains
 message CallContractsProposal {
-  option (gogoproto.goproto_stringer) = false;
+  option (gogoproto.goproto_stringer) = true;
 
   string title = 1;
   string description = 2;
@@ -19,7 +19,7 @@ message CallContractsProposal {
 }
 
 message ContractCall {
-  option (gogoproto.goproto_stringer) = false;
+  option (gogoproto.goproto_stringer) = true;
 
   string chain = 1
       [ (gogoproto.casttype) =

@@ -5,7 +5,7 @@ set -eo pipefail
 mkdir -p ./tmp-swagger-gen
 
 # Get the path of the cosmos-sdk repo from go/pkg/mod
-proto_dirs=$(find ./proto ./third_party/proto -path -prune -o -name '*.proto' -print0 | xargs -0 -n1 dirname | sort | uniq)
+proto_dirs=$(find ./proto ./third_party -path -prune -o -name '*.proto' -print0 | xargs -0 -n1 dirname | sort | uniq)
 
 for dir in $proto_dirs; do
   # generate swagger files (filter query files)
@@ -17,7 +17,7 @@ for dir in $proto_dirs; do
   for proto_file in ${proto_files}; do
     buf protoc  \
     -I "proto" \
-    -I "third_party/proto" \
+    -I "third_party" \
     "$proto_file" \
     --swagger_out=./tmp-swagger-gen \
     --swagger_opt=logtostderr=true \

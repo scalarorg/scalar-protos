@@ -4,7 +4,7 @@ set -eo pipefail
 
 protoc_gen_go() {
   if ! grep "github.com/gogo/protobuf => github.com/regen-network/protobuf" go.mod &>/dev/null; then
-    echo -e "\tPlease run this command from somewhere inside the axelar-core folder."
+    echo -e "\tPlease run this command from somewhere inside the scalar-core folder."
     return 1
   fi
 }
@@ -32,5 +32,5 @@ buf protoc \
   $(find "$(pwd)/proto" -maxdepth 5 -name '*.proto') # this needs to remain unquoted because we want word splitting
 
 # move proto files to the right places
-# cp -r github.com/scalarorg/scalar-core/* ./
-# rm -rf github.com
+cp -r github.com/scalarorg/scalar-protos/* ./
+rm -rf github.com
