@@ -11,7 +11,7 @@ option (gogoproto.goproto_getters_all) = false;
 // CallContractsProposal is a gov Content type for calling contracts on other
 // chains
 message CallContractsProposal {
-  option (gogoproto.goproto_stringer) = true;
+  option (gogoproto.goproto_stringer) = false;
 
   string title = 1;
   string description = 2;
@@ -19,7 +19,7 @@ message CallContractsProposal {
 }
 
 message ContractCall {
-  option (gogoproto.goproto_stringer) = true;
+  option (gogoproto.goproto_stringer) = false;
 
   string chain = 1
       [ (gogoproto.casttype) =
